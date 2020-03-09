@@ -9,12 +9,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.prgs.PublicRaiseGovernamentSolve.Service.UsersService;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
-import com.prgs.PublicRaiseGovernamentSolve.repository.UsersRepository;
 
 @Controller
 public class LoginAndRegistrationController {
-	@Autowired
-	private UsersRepository userRepo;
+	
 	@Autowired
 	private UsersService service;
 

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+  <style>
+      header {
+      background-color: #ce5181;
+      padding: 20px;
+      text-align: center;
+      font-size: 15px;
+      color:cornsilk;
+  }
+  .main{
+    padding: 30px;
+  }
+        .nav-item {
+          /* padding: 20px; */
+            display: flex;
+            /* background-color: #333; */
+        }
+        footer {
+            background-color: #777;
+            padding: 10px;
+            text-align: center;
+            color: white;
+        }
+  </style>
+</head>
+<body>
+    <header class="header">
+        <h3>Welcome To PRGS</h3>
+        <h6>Public Raise Governament Solve</h6>
+    </header>
+<div class="main">
+
+
+<div class="container mt-3">
+    <!-- Nav tabs -->
+  <ul class="nav nav-tabs">
+    <li class="nav-item">
+      <a class="nav-link active" data-toggle="tab" href="#home">Submit Complaint</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu1">Complaint History</a>
+    </li>
+    <!-- <li class="nav-item">
+      <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
+    </li> -->
+  </ul>
+
+  <!-- Tab panes -->
+  <div class="tab-content">
+    <div id="home" class="container tab-pane active"><br>
+    <form action="#" th:action="@{/saveComplaint}" th:object="${TicketDetails}"method="post">
+            <label>Complaint Type &nbsp;&nbsp;</label>
+				 <select name="Complaint Type" th:field="*{complaintType}">
+					<option value="Select one Option">Select one Option</option>
+					<option value="Electrical">Electrical</option>
+					<option value="Roads">Roads</option>
+					<option value="Garbage">Garbage</option>
+					<option value="Water">Water</option>
+					<option value="others">Others</option>
+				</select><br> <label>Description &nbsp;&nbsp;</label><br>
+				<textarea rows="4" cols="50" th:field="*{description}"></textarea><br>
+				 <small style="text-align: right;">Upto 500 words</small><br><br> 
+				 <label>Address/GeoLocation &nbsp;&nbsp;</label><br>
+				<textarea rows="4" cols="50" th:field="*{geoLocation}"></textarea><br> <br> 
+				<label>Attachment &nbsp;&#128206;</label>
+						<!--         <form action="/action_page.php">
+                <input class="button" type="file" name="pic" accept="image/*" th:field="*{photo}">
+            </form><br>  -->
+            <input class="button" type="submit">
+       </form>
+    </div>
+    <div id="menu1" class="container tab-pane fade"><br>
+      <h4>My Complaint Details</h4>
+      <table border="1">
+			<thead>
+			<tr>
+				<th>ID</th>
+				<th>Description</th>
+				<th>Status</th>
+				<th>actions</th>
+			</tr>
+			</thead>
+			<tbody>
+			<tr>Print row</tr>
+			<tr th:each="ticket : ${listTicket}">
+				<td th:text="${ticket.Id}">ID</td>
+				<td th:text="${ticket.description}">Description</td>
+				<td th:text="${ticket.status}">Status</td>
+				<td><a th:href="@{'/edit/' + ${ticket.id}}">Edit</a></td>
+				&nbsp;&nbsp;
+				<td><a th:href="@{'/delete/' + ${ticket.id}}">Delete</a></td>
+			</tr>
+			</tbody>
+			</table>
+    </div>
+    </div>
+  </div>
+</div>
+</div>
+<footer class="footer">
+    <h4>Thank You</h4>
+</footer>
+</body>
+</html>
