@@ -20,12 +20,15 @@ public class TicketController {
 	@RequestMapping("/complaint_page")
 	public String viewComplaintPage(@ModelAttribute("TicketDetails") TicketDetails ticket) {
 		ticket.setTicketType("complaint");
+		System.out.println("complaint page");
 		return "cticket";
 	}
 	@RequestMapping(value="/saveComplaint", method=RequestMethod.POST)
 	public String saveTicket(@ModelAttribute("TicketDetails") TicketDetails ticket) {
+		System.out.println("saving complaint");
 		ticket.setTicketType("complaint");
-		System.out.println(ticket.getUserId());
+		System.out.println("id is "+tservice.get(ticket.getId()));
+		System.out.println("user id is "+ticket.getUserId());
 		tservice.save(ticket);			
 		return "cticket";
 		
