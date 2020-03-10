@@ -12,7 +12,7 @@ import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 
 @Controller
 public class LoginAndRegistrationController {
-	
+
 	@Autowired
 	private UsersService service;
 
@@ -32,7 +32,7 @@ public class LoginAndRegistrationController {
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveUser(@ModelAttribute("users") Users users) {
-		users.setRoleId(1);		
+		users.setRoleId(1);
 		service.save(users);
 		return "login";
 	}
@@ -43,13 +43,7 @@ public class LoginAndRegistrationController {
 		model.addAttribute("users", users);
 		return "login";
 	}
-
-//	@RequestMapping(value = "/register", method = RequestMethod.POST)
-//	public String saveRegisteredUser(@ModelAttribute("users") Users users) {
-//		users.setRoleId(1);
-//		userRepo.save(users);
-//		return "login";
-//	}
+	
 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String validateLoginInfo(@ModelAttribute Users user, Model model) {
@@ -72,6 +66,7 @@ public class LoginAndRegistrationController {
 			// TODO Auto-generated catch block
 			System.out.println("Not a valid email. Please register using sign up");
 		}
+		// service.loginWithRole() ;
 		return "userViewPage";
 	}
 

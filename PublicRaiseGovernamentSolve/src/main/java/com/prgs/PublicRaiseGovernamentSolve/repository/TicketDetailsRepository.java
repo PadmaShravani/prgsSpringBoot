@@ -6,5 +6,5 @@ import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 
 public interface TicketDetailsRepository extends JpaRepository<TicketDetails,Integer> {
 	 
-	
+	TicketDetails findByUserId(int Id);
 }
