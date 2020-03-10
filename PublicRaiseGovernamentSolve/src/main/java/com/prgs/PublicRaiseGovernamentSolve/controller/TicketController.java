@@ -24,6 +24,12 @@ public class TicketController {
 		System.out.println("complaint page");
 		return "cticket";
 	}
+	@RequestMapping("/request_page")
+	public String viewRequestPage(@ModelAttribute("TicketDetails") TicketDetails ticket) {
+		ticket.setTicketType("request");
+		System.out.println("request page");
+		return "rticket";
+	}
 //	@RequestMapping(value="/saveComplaint", method=RequestMethod.POST)
 //	public String saveTicket(@ModelAttribute("TicketDetails") TicketDetails ticket) {
 //		System.out.println("saving complaint");
@@ -37,7 +43,7 @@ public class TicketController {
 //	}
 	
 	@RequestMapping(value="/saveComplaint", method=RequestMethod.POST)
-	public String saveTicket(@ModelAttribute TicketDetails ticket, Model model) {
+	public String saveComplaintTicket(@ModelAttribute TicketDetails ticket, Model model) {
 		ticket.setTicketType("complaint");
 		TicketDetails td;
 		Users user=new Users();
@@ -48,10 +54,19 @@ public class TicketController {
 		return "cticket";
 	}
 	
+	@RequestMapping(value="/saveRequest", method=RequestMethod.POST)
+	public String saveRequestTicket(@ModelAttribute TicketDetails ticket, Model model) {
+		ticket.setTicketType("request");
+		TicketDetails td;
+		Users user=new Users();
+		td= tservice.findByUserId(user.getUserId());
+		System.out.println("user class"+user.getUserId());
+		System.out.println("uid  "+td);
+		tservice.save(ticket);			
+		return "rticket";
+	}
 	
-	
-	
-	
+		
 	@RequestMapping("/list_complaints")
 	public String viewAllCompalaintsPage(Model model) {
 		System.out.println("all complaints");
@@ -61,5 +76,13 @@ public class TicketController {
 		return "cticket";
 	}
 	
+	@RequestMapping("/list_requests")
+	public String viewAllRequestsPage(Model model) {
+		System.out.println("all complaints");
+		List<TicketDetails> listTickets=tservice.listAll();
+		System.out.println(listTickets.size()+"  size");
+		model.addAttribute("listTicket", listTickets);
+		return "rticket";
+	}
 
 }

@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<title>Bootstrap Example</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet"
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
+<script
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+<style>
+header {
+	background-color: #ce5181;
+	padding: 20px;
+	text-align: center;
+	font-size: 15px;
+	color: cornsilk;
+}
+
+.main {
+	padding: 20px;
+}
+
+footer {
+	background-color: #777;
+	padding: 10px;
+	text-align: center;
+	color: white;
+}
+</style>
+</head>
+<body>
+	<header class="header">
+		<h3>Welcome To PRGS</h3>
+		<h6>Public Raise Governament Solve</h6>
+	</header>
+	<div class="main">
+		<div class="container mt-3">
+			<!-- Nav tabs -->
+			<ul class="nav nav-tabs">
+				<li class="nav-item"><a class="nav-link active"
+					data-toggle="tab" href="#home">Submit Request</a></li>
+				<li class="nav-item"><a class="nav-link" data-toggle="tab"
+					href="#menu1">All Requests</a></li>
+			</ul>
+
+			<!-- Tab panes -->
+<div class="tab-content">
+	<div id="home" class="container tab-pane active">
+		<form action="#" th:action="@{/saveRequest}" th:object="${TicketDetails}" method="post">
+			<br> <label>City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			<input type="text" name="text" th:field="*{city}"><br>
+			<label>Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
+			 <input	type="text" name="text" th:field="*{street}"><br> <label>ZipCode&nbsp;</label>
+			<input type="text" name="text" th:field="*{zipCode}"><br>
+			<label>Description &nbsp;&nbsp;</label><br>
+			<textarea rows="4" cols="50" th:field="*{description}"></textarea>
+			<br> <small style="text-align: right;">Upto 500 words</small>
+			<br> <br> <input class="button" type="submit">
+			</form>
+	</div>
+	<div id="menu1" class="container tab-pane fade"><br>
+		<h4>All Requests</h4>
+		<table border="1">
+			<thead>
+			<tr>
+			<th>ID</th>
+			<th>Description</th>
+			<th>Status</th>
+		
+			</tr>
+			</thead>
+			<tbody>
+			<tr>Print row</tr>
+				<tr th:each="ticket : ${listTicket}">
+				<td th:text="${ticket.Id}">ID</td>
+				<td th:text="${ticket.description}">Description</td>
+				<td th:text="${ticket.status}">Status</td>
+				</tr>
+				</tbody>
+				</table>
+				</div>
+			</div>
+		</div>
+	</div>
+	<footer class="footer">
+		<h4>Thank You</h4>
+	</footer>
+</body>
+</html>

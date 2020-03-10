@@ -49,9 +49,6 @@
     <li class="nav-item">
       <a class="nav-link" data-toggle="tab" href="#menu1">Complaint History</a>
     </li>
-    <!-- <li class="nav-item">
-      <a class="nav-link" data-toggle="tab" href="#menu2">Menu 2</a>
-    </li> -->
   </ul>
 
   <!-- Tab panes -->
@@ -83,28 +80,22 @@
       <table border="1">
 			<thead>
 			<tr>
-				<th>ID</th>
+				<!-- <th>ID</th> -->
 				<th>Description</th>
 				<th>Status</th>
-				<th>actions</th>
 			</tr>
 			</thead>
 			<tbody>
-			<tr>Print row</tr>
 			<tr th:each="ticket : ${listTicket}">
 				<td th:text="${ticket.Id}">ID</td>
 				<td th:text="${ticket.description}">Description</td>
 				<td th:text="${ticket.status}">Status</td>
-				<td><a th:href="@{'/edit/' + ${ticket.id}}">Edit</a></td>
-				&nbsp;&nbsp;
-				<td><a th:href="@{'/delete/' + ${ticket.id}}">Delete</a></td>
 			</tr>
 			</tbody>
 			</table>
     </div>
     </div>
   </div>
-</div>
 </div>
 <footer class="footer">
     <h4>Thank You</h4>
