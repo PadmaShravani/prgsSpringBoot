@@ -23,8 +23,8 @@ public class LoginAndRegistrationController {
 	private String loggedInUser = null;
 
 	@RequestMapping("/prgs")
-	public String viewHomePage(Model model) {
-		return "home";
+	public String viewVisitorPage(Model model) {
+		return "visitor";
 	}
 
 	@RequestMapping("/new_user")
@@ -59,22 +59,28 @@ public class LoginAndRegistrationController {
 			System.out.println("From DB :" + exist_user.getEmail());
 			System.out.println("From DB :" + exist_user.getPassword());
 			if (!exist_user.getPassword().equalsIgnoreCase(user.getPassword())) {
+				
 				System.out.println("Not a valid password. Please click forgot password");
+				model.addAttribute("errorMessage", "Please enter valid Password ");
 				return "login";
 			} else {
 				// loggedInUser = user.getEmail();
+			
 				loggedInUser = exist_user.getFirstName() + " " + exist_user.getLastName();				
 				model.addAttribute("msg", "Logged in as " + loggedInUser);
 				model.addAttribute("loggedInUserEmail", exist_user.getEmail());
 				model.addAttribute("loggedInUserName",  exist_user.getUserName());
 				model.addAttribute("loggedInUserID",  exist_user.getUserId());
+				
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			System.out.println("Not a valid email. Please register using sign up");
+			model.addAttribute("erroremail", "Please enter valid email ");
+			return "login";
 		}
-		// service.loginWithRole() ;
-		return "userViewPage";
+		 System.out.println("role id "+exist_user.getRoleId());
+		return service.loginWithRole(exist_user);
 	}
 
 }

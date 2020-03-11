@@ -13,21 +13,24 @@ public class UsersService {
 	@Autowired
 	private UsersRepository repo;
 	
-//	public String loginWithRole() {
-//		Users users=new Users();
+//	public void loginWithRole(int roleId) {
+//		repo.findByRoleId(roleId);
 //		
-//		if (users.getRoleId() == 1) {
-//			return "userViewPage";
-//		}
-//		else if (users.getRoleId() == 2) {
-//				System.out.println("Admin login");
-//				return "adminViewPage";
-//			} else if (users.getRoleId() == 3) {
-//				System.out.println("department login");
-//				return "departmentViewPage";
-//			}
-//		return "";
 //	}
+	public String loginWithRole(Users users) {
+				
+		if (users.getRoleId() == 1) {
+			return "userViewPage";
+		}
+		else if (users.getRoleId() == 2) {
+				System.out.println("Admin login");
+				return "adminViewPage";
+			} else if (users.getRoleId() == 3) {
+				System.out.println("department login");
+				return "departmentViewPage";
+			}
+		return "visitor";
+	}
 	
 	
 	public List<Users> listAll(){

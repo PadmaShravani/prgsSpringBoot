@@ -7,4 +7,5 @@ import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 public interface UsersRepository extends JpaRepository<Users,Integer> {
 	 
 	Users findByEmail(String email);
+	
 }

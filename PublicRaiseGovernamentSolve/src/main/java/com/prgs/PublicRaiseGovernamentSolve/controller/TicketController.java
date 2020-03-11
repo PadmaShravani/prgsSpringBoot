@@ -20,14 +20,18 @@ public class TicketController {
 	@Autowired
 	private TicketService tservice;
 
+	@RequestMapping("/home")
+	public String viewVisitorPage(Model model) {
+		return "userViewPage";
+	}
+	
 	@RequestMapping("/complaint_page")
 	public String viewComplaintPage(Model model) {
 		TicketDetails td = new TicketDetails();
 		model.addAttribute("ticketdetails", td);
 		System.out.println("all complaints");
-		int u=(int) model.getAttribute("loggedInUserID");
-		
-		List<TicketDetails> listTickets=tservice.findByUserIdAndTicketType(u, "complaint");
+		int uId=(int) model.getAttribute("loggedInUserID");
+		List<TicketDetails> listTickets=tservice.findByUserIdAndTicketType(uId, "complaint");
 		System.out.println("No. of Tickets: "+listTickets.size());
 		model.addAttribute("listtickets", listTickets);	
 		return "cticket";
@@ -60,7 +64,8 @@ public class TicketController {
 		TicketDetails td = new TicketDetails();
 		model.addAttribute("requestdetails", td);
 		System.out.println("request page");
-		List<TicketDetails> listRequests=tservice.listAll();
+		int uId=(int) model.getAttribute("loggedInUserID");
+		List<TicketDetails> listRequests=tservice.findByUserIdAndTicketType(uId, "request");
 		System.out.println("No. of Tickets: "+listRequests.size());
 		model.addAttribute("listrequests", listRequests);	
 		return "rticket";

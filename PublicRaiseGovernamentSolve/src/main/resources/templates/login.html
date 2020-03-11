@@ -16,10 +16,13 @@
         <img src="../image/logo.jpg" class="avatar"><br>
         <input class="length" type="text" name="email" placeholder="email"th:field="*{email}"> <br><br>
         <input class="length" type="password" name="password" placeholder="password "th:field="*{password}"> <br><br>        
+        <label style="color:red;" th:text=${errorMessage}></label><br>
+        <label style="color:red;" th:text=${erroremail}></label><br>
+        
         <small style="color: darkblue;">Forgot password </small>
-        <a href="userViewPage"> <button title="click me">Login</button></a><br><br>
+        <button title="click me">Login</button><br><br>
         <small>Need an account?</small>
-        <a href="/new_user"><button title="Click to register">Sign Up</button></a>
+        <a href="new_user"><button title="Click to register">Sign Up</button></a>
         </div>
         </form>
 </body>
