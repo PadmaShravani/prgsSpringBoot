@@ -61,6 +61,8 @@ footer {
 	<header class="header">
 		<h3>Welcome To PRGS</h3>
 		<h6>Public Raise Government Solve</h6>
+		<label th:text=${msg}></label>
+
 	</header>
 	<section class="navbar">
 		<a href="existing_user">Sign Out</a>
@@ -81,10 +83,9 @@ footer {
 			<div class="tab-content">
 				<div id="home" class="container tab-pane active">
 					<br>
-					<form action="#" th:action="@{/saveComplaint}"
-						th:object="${TicketDetails}" method="post">
-						<label>Complaint Type &nbsp;&nbsp;</label> <select
-							name="Complaint Type" th:field="*{complaintType}">
+					<form action="#" th:action="@{/saveComplaint}" th:object="${ticketdetails}" method="post">
+						<label>Complaint Type &nbsp;&nbsp;</label> 
+						<select name="Complaint Type" th:field="*{complaintType}">
 							<option value="Select one Option">Select one Option</option>
 							<option value="Electrical">Electrical</option>
 							<option value="Roads">Roads</option>
@@ -101,27 +102,31 @@ footer {
                 <input class="button" type="file" name="pic" accept="image/*" th:field="*{photo}">
             </form><br>  -->
 						<input class="button" type="submit">
-					</form>
+					</form>				
+					
 				</div>
+				
+				
+		
 				<div id="menu1" class="container tab-pane fade">
 					<br>
+					 
 					<h4>My Complaint Details</h4>
 					<table border="1">
 						<thead>
 							<tr>
-								<!-- <th>ID</th> -->
 								<th>Description</th>
 								<th>Status</th>
 							</tr>
 						</thead>
 						<tbody>
-							<tr th:each="ticket : ${listTicket}">
-								<td th:text="${ticket.Id}">ID</td>
+							<tr th:each="ticket : ${listtickets}">
 								<td th:text="${ticket.description}">Description</td>
 								<td th:text="${ticket.status}">Status</td>
 							</tr>
 						</tbody>
 					</table>
+				
 				</div>
 			</div>
 		</div>

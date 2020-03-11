@@ -54,7 +54,7 @@ footer {
 <body>
 	<header class="header">
 		<h3>Welcome To PRGS</h3>
-		<h6>Public Raise Governament Solve</h6>
+		<h6>Public Raise Government Solve</h6>
 	</header>
 	<section class="navbar">
 		<a href="existing_user">Sign Out</a>
@@ -72,16 +72,15 @@ footer {
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div id="home" class="container tab-pane active">
-					<form action="#" th:action="@{/saveRequest}"
-						th:object="${TicketDetails}" method="post">
+					<form action="#" th:action="@{/saveRequest}" th:object="${requestdetails}" method="post">
 						<br> <label>City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-						<input type="text" name="text" th:field="*{city}"><br>
+						<input type="text" name="city" th:field="*{city}"><br>
 						<label>Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label> <input
-							type="text" name="text" th:field="*{street}"><br> <label>ZipCode&nbsp;</label>
-						<input type="text" name="text" th:field="*{zipCode}"><br>
+							type="text" name="street" th:field="*{street}"><br> <label>ZipCode&nbsp;</label>
+						<input type="text" name="zipCode" th:field="*{zipCode}"><br>
 						<label>Description &nbsp;&nbsp;</label><br>
 						<textarea rows="4" cols="50" th:field="*{description}"></textarea>
-						<br> <small style="text-align: right;">Upto 500 words</small>
+						<br> <small style="text-align: right;">Up to 500 words</small>
 						<br> <br> <input class="button" type="submit">
 					</form>
 				</div>
@@ -91,17 +90,12 @@ footer {
 					<table border="1">
 						<thead>
 							<tr>
-								<th>ID</th>
 								<th>Description</th>
 								<th>Status</th>
-
 							</tr>
 						</thead>
 						<tbody>
-							<tr>Print row
-							</tr>
-							<tr th:each="ticket : ${listTicket}">
-								<td th:text="${ticket.Id}">ID</td>
+							<tr th:each="ticket : ${listrequests}">
 								<td th:text="${ticket.description}">Description</td>
 								<td th:text="${ticket.status}">Status</td>
 							</tr>

@@ -1,16 +1,20 @@
 package com.prgs.PublicRaiseGovernamentSolve.controller;
 
+
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.prgs.PublicRaiseGovernamentSolve.Service.UsersService;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 
 @Controller
+@SessionAttributes({"msg","loggedInUserID", "loggedInUserEmail", "loggedInUserName"})
 public class LoginAndRegistrationController {
 
 	@Autowired
@@ -59,8 +63,11 @@ public class LoginAndRegistrationController {
 				return "login";
 			} else {
 				// loggedInUser = user.getEmail();
-				loggedInUser = exist_user.getFirstName() + " " + exist_user.getLastName();
+				loggedInUser = exist_user.getFirstName() + " " + exist_user.getLastName();				
 				model.addAttribute("msg", "Logged in as " + loggedInUser);
+				model.addAttribute("loggedInUserEmail", exist_user.getEmail());
+				model.addAttribute("loggedInUserName",  exist_user.getUserName());
+				model.addAttribute("loggedInUserID",  exist_user.getUserId());
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

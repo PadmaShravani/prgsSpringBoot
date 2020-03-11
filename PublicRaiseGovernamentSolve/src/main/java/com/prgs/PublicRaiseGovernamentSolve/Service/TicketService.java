@@ -26,8 +26,8 @@ public class TicketService {
 		return trepo.findById(id).get();
 
 	}
-	public TicketDetails findByUserId(int Id) {
-		return trepo.findByUserId(Id);
+	public List<TicketDetails> findByUserIdAndTicketType(int UserId,String ticketType) {
+		return trepo.findByUserIdAndTicketType(UserId,ticketType);
 		
 	}
 	

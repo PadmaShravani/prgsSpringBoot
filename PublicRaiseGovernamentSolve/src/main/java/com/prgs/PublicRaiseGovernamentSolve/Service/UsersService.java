@@ -41,14 +41,14 @@ public class UsersService {
 	}
 	
 	
-	public Users get(int id) {
-		return repo.findById(id).get();
+	public Users get(int userId) {
+		return repo.findById(userId).get();
 		
 	}
 	
-	public void delete(int id) {
+	public void delete(int userId) {
 		
-		repo.deleteById(id);
+		repo.deleteById(userId);
 	}
 	
 	public Users findByEmail(String email) {
