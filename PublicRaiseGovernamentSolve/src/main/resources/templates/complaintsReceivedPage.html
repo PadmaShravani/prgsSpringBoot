@@ -65,6 +65,8 @@ footer {
 	<table border="1">
 		<thead>
 			<tr>
+				<th>ID</th>
+				<th>User Id</th>
 				<th>Complaint Type</th>
 				<th>Description</th>
 				<th>Address/GeoLocation</th>
@@ -75,6 +77,8 @@ footer {
 		</thead>
 	    <tbody>
 			<tr th:each="ticket : ${list_all_complaints}">
+			<td th:text="${ticket.Id}">Id</td>
+			<td th:text="${ticket.userId}">UserId</td>
 				<td th:text="${ticket.complaintType}">Complaint Type</td>
 				<td th:text="${ticket.description}">Description</td>
 				<td th:text="${ticket.geoLocation}">Address/GeoLocation</td>
@@ -83,7 +87,7 @@ footer {
 			</tr>
 		</tbody>
 	</table>
-	<a href="../html/TicketOpeningPage.html">RaiseTicket</a>
+	<a href="admin_raise">RaiseTicket</a>
 		
 </div>
 

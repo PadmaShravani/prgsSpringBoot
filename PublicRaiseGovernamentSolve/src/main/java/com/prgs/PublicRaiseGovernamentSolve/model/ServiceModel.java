@@ -16,7 +16,7 @@ import javax.persistence.Table;
 
 @Entity
 @Table(name = "Service")
-public class Service {
+public class ServiceModel {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int serviceId;
@@ -41,12 +41,12 @@ public class Service {
 	    @JoinColumn(name = "departmentId",referencedColumnName="departmentId",insertable = false, updatable = false)
 	  private Department department;
 
-	public Service() {
+	public ServiceModel() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
 
-	public Service(int serviceId, String description, String status, int level, int departmentId,
+	public ServiceModel(int serviceId, String description, String status, int level, int departmentId,
 			List<TicketDetails> listOfticket, Department department) {
 		super();
 		this.serviceId = serviceId;

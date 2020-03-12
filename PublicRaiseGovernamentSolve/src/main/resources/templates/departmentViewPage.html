@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
-<title>Department Page</title>
+<title>PRGS/Department Page</title>
 <style>
 header {
 	background-color: #ce5181;
@@ -54,22 +54,43 @@ footer {
 	<header class="header">
 		<h3>Welcome To PRGS</h3>
 		<h5>Public Raise Government Solve</h5>
+		<label th:text=${msg}></label>
 	</header>
 	<section class="navbar">
 		<a href="existing_user">Sign Out</a>
 	</section>
 	<div class="main">
-		<label>Service Id</label> <input type="number" name="Service Id"
-			value=""><br> <label>Description &nbsp;&nbsp;</label><br>
-		<textarea rows="4" cols="50"></textarea>
-		<br> <label>Status</label><br> <select name="Status">
-			<option value="Select one Option">Select one Option</option>
-			<option value="Open">Open</option>
-			<option value="Closed">Closed</option>
-			<option value="Pending">Pending</option>
-			<option value="Progress">Progress</option>
-		</select><br>
-		<br> <input class="button" type="submit">
+	<form action="#" th:action="@{/department_update}" th:object="${update}"	method="post">
+	<table border="1">
+		<thead>
+			<tr>
+				<th>Service Id</th>
+				<th>Description</th>
+				<th>Address</th>
+				<th>Status</th>	
+			</tr>
+		</thead>
+	    <tbody>
+			<tr th:each="ticket : ${list_all_requests}">
+			<td th:text="${ticket.departmentId}">Id</td>
+			<td th:text="${ticket.serviceId}">serviceId</td>
+				<td th:text="${ticket.description}">Description</td>
+				<td th:text="${ticket.geoLocation}">GeoLocation</td>
+				<td th:text="${ticket.status}">
+						<select name="Status" th:field="*{status}">
+                            <option value="Select one Option">Select one Option</option>
+                            <option value="Open">Open</option>
+                            <option value="Closed">Closed</option>
+                            <option value="Pending">Pending</option>
+                            <option value="Progress">Progress</option>
+                        </select><br>
+                </td>
+			</tr>
+		</tbody>
+	</table>
+	
+			 <input class="button" type="submit">
+</form>		
 	</div>
 	<footer class="footer">
 		<h4>Thank You</h4>

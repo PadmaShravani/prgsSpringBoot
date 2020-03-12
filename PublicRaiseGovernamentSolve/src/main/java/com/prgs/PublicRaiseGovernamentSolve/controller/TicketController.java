@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.prgs.PublicRaiseGovernamentSolve.Service.TicketService;
+import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 
 
@@ -101,5 +102,12 @@ public class TicketController {
 		model.addAttribute("list_all_requests", listAllRequests);
 		return "RequestsReceivedPage";
 	}
+	
+//	@RequestMapping(value="/admin_ticket", method=RequestMethod.POST)
+//	public String adminRaiseTicket(@ModelAttribute("service") ServiceModel service,Model model) {
+//		
+//		return null;
+//		
+//	}
 	
 }

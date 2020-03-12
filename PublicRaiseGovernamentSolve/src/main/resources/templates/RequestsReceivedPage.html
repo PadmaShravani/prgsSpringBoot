@@ -73,6 +73,8 @@ footer {
 		</thead>
 	    <tbody>
 			<tr th:each="ticket : ${list_all_requests}">
+			<td th:text="${ticket.Id}">Id</td>
+			<td th:text="${ticket.userId}">UserId</td>
 				<td th:text="${ticket.city}">City</td>
 				<td th:text="${ticket.street}">Street</td>
 				<td th:text="${ticket.zipCode}">ZipCode</td>
@@ -81,7 +83,7 @@ footer {
 			</tr>
 		</tbody>
 	</table>
-	<a href="../html/TicketOpeningPage.html">RaiseTicket</a>
+	<a href="admin_raise">RaiseTicket</a>
 		
 </div>
 
