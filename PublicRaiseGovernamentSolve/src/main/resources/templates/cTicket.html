@@ -65,8 +65,7 @@ footer {
 
 	</header>
 	<section class="navbar">
-		<a href="home">HomePage</a>
-		<a href="existing_user">Sign Out</a>
+		<a href="home">HomePage</a> <a href="existing_user">Sign Out</a>
 	</section>
 	<div class="main">
 
@@ -84,9 +83,10 @@ footer {
 			<div class="tab-content">
 				<div id="home" class="container tab-pane active">
 					<br>
-					<form action="#" th:action="@{/saveComplaint}" th:object="${ticketdetails}" method="post">
-						<label>Complaint Type &nbsp;&nbsp;</label> 
-						<select name="Complaint Type" th:field="*{complaintType}">
+					<form action="#" th:action="@{/saveComplaint}"
+						th:object="${ticketdetails}" method="post">
+						<label>Complaint Type &nbsp;&nbsp;</label> <select
+							name="Complaint Type" th:field="*{complaintType}">
 							<option value="Select one Option">Select one Option</option>
 							<option value="Electrical">Electrical</option>
 							<option value="Roads">Roads</option>
@@ -103,15 +103,16 @@ footer {
                 <input class="button" type="file" name="pic" accept="image/*" th:field="*{photo}">
             </form><br>  -->
 						<input class="button" type="submit">
-					</form>				
-					
+					</form>
+
 				</div>
-				
-				
-		
+
+
+
 				<div id="menu1" class="container tab-pane fade">
 					<br>
-					 
+
+
 					<h4>My Complaint Details</h4>
 					<table border="1">
 						<thead>
@@ -127,7 +128,7 @@ footer {
 							</tr>
 						</tbody>
 					</table>
-				
+
 				</div>
 			</div>
 		</div>

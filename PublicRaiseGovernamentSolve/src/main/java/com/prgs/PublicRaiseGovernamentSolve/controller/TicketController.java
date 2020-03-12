@@ -31,9 +31,9 @@ public class TicketController {
 		model.addAttribute("ticketdetails", td);
 		System.out.println("all complaints");
 		int uId=(int) model.getAttribute("loggedInUserID");
-		List<TicketDetails> listTickets=tservice.findByUserIdAndTicketType(uId, "complaint");
-		System.out.println("No. of Tickets: "+listTickets.size());
-		model.addAttribute("listtickets", listTickets);	
+		List<TicketDetails> listUserTickets=tservice.getUserTickets(uId, "complaint");
+		System.out.println("No. of Tickets: "+listUserTickets.size());
+		model.addAttribute("listtickets", listUserTickets);	
 		return "cticket";
 	}
 	
@@ -50,14 +50,14 @@ public class TicketController {
 		return "cticket";
 	}
 	
-	@RequestMapping("/complaint_page#menu1")
-	public void viewAllCompalaintsPage(Model model) {
-		System.out.println("all complaints");
-		List<TicketDetails> listTickets=tservice.listAll();
-		System.out.println("No. of Tickets: "+listTickets.size());
-		model.addAttribute("listtickets", listTickets);
-		//return "cticket";
-	}
+//	@RequestMapping("/complaint_page#menu1")
+//	public void viewAllCompalaintsPage(Model model) {
+//		System.out.println("all complaints");
+//		List<TicketDetails> listTickets=tservice.listAll();
+//		System.out.println("No. of Tickets: "+listTickets.size());
+//		model.addAttribute("listtickets", listTickets);
+//		//return "cticket";
+//	}
 	
 	@RequestMapping("/request_page")
 	public String viewRequestPage(Model model) {
@@ -65,7 +65,7 @@ public class TicketController {
 		model.addAttribute("requestdetails", td);
 		System.out.println("request page");
 		int uId=(int) model.getAttribute("loggedInUserID");
-		List<TicketDetails> listRequests=tservice.findByUserIdAndTicketType(uId, "request");
+		List<TicketDetails> listRequests=tservice.getUserTickets(uId, "request");
 		System.out.println("No. of Tickets: "+listRequests.size());
 		model.addAttribute("listrequests", listRequests);	
 		return "rticket";
@@ -85,14 +85,21 @@ public class TicketController {
 		return "rticket";
 	}
 				
-//	@RequestMapping("/list_requests")
-//	public String viewAllRequestsPage(Model model) {
-//		System.out.println("all complaints");
-//		List<TicketDetails> listTickets=tservice.listAll();
-//		System.out.println(listTickets.size()+"  size");
-//		model.addAttribute("listTicket", listTickets);
-//		return "rticket";
-//	}
-	
+	@RequestMapping("/complaints_received")
+	public String viewAllComplaints(Model model) {
+		System.out.println("all complaints");
+		List<TicketDetails> listAllComplaints=tservice.getAllTickets("complaint");
+		System.out.println(listAllComplaints.size()+"  size");
+		model.addAttribute("list_all_complaints", listAllComplaints);
+		return "complaintsReceivedPage";
+	}
+	@RequestMapping("/requests_received")
+	public String viewAllRequests(Model model) {
+		System.out.println("all complaints");
+		List<TicketDetails> listAllRequests=tservice.getAllTickets("request");
+		System.out.println(listAllRequests.size()+"  size");
+		model.addAttribute("list_all_requests", listAllRequests);
+		return "RequestsReceivedPage";
+	}
 	
 }

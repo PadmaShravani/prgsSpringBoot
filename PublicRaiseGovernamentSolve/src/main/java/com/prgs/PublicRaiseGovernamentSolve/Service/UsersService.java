@@ -13,10 +13,7 @@ public class UsersService {
 	@Autowired
 	private UsersRepository repo;
 	
-//	public void loginWithRole(int roleId) {
-//		repo.findByRoleId(roleId);
-//		
-//	}
+
 	public String loginWithRole(Users users) {
 				
 		if (users.getRoleId() == 1) {

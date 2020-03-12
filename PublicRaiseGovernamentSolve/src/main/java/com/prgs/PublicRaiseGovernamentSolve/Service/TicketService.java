@@ -26,10 +26,12 @@ public class TicketService {
 		return trepo.findById(id).get();
 
 	}
-	public List<TicketDetails> findByUserIdAndTicketType(int UserId,String ticketType) {
+	public List<TicketDetails> getUserTickets(int UserId,String ticketType) {
 		return trepo.findByUserIdAndTicketType(UserId,ticketType);
 		
 	}
-	
+	public List<TicketDetails> getAllTickets(String ticketType){
+		return trepo.findByTicketType(ticketType);
+	}
 
 }

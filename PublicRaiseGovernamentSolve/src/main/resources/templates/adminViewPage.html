@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
 <title>Bootstrap Example</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
-	href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
+	href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script> -->
 <script
-	src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+	src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 <style>
 /* Style the header */
 header {
@@ -21,18 +20,19 @@ header {
 	color: cornsilk;
 }
 
-.tab-content {
-	padding: 50px;
+.container {
+	padding: 70px;
 }
-
+/* Style the top navigation bar */
 .navbar {
 	display: flex;
 	background-color: #333;
 }
+
 /* Style the navigation bar links */
 .navbar a {
-	color: whitesmoke;
-	padding: 2px;
+	color: white;
+	padding: 14px 20px;
 	text-decoration: none;
 	text-align: center;
 }
@@ -42,8 +42,10 @@ header {
 	background-color: #ddd;
 	color: black;
 }
+
 /* Style the footer */
 footer {
+	/* position:fixed; */
 	background-color: #777;
 	padding: 10px;
 	text-align: center;
@@ -52,65 +54,44 @@ footer {
 </style>
 </head>
 <body>
-	<header class="header">
-		<h3>Welcome To PRGS</h3>
-		<h6>Public Raise Government Solve</h6>
+	<header>
+		<h2>Welcome To PRGS</h2>
+		<label th:text=${msg}></label>
 	</header>
 	<section class="navbar">
-        <a href="existing_user">Sign Out</a>   
-    </section>
-	<div class="container mt-3">
-		<!-- Nav tabs -->
-		<ul class="nav nav-tabs">
-			<li class="nav-item"><a class="nav-link active"
-				data-toggle="tab" href="#home">Complaints Received</a></li>
-			<li class="nav-item"><a class="nav-link" data-toggle="tab"
-				href="#menu1">Requests Received</a></li>
-		</ul>
+		<a href="existing_user">Sign Out</a>
+	</section>
 
-		<!-- Tab panes -->
-		<div class="tab-content">
-			<div id="home" class="container tab-pane active">
-				<br> <label>Complaint Type &nbsp;&nbsp;</label> <select
-					name="Complaint Type">
-					<option value="Select one Option">Select one Option</option>
-					<option value="Electrical">Electrical</option>
-					<option value="Roads">Roads</option>
-					<option value="Garbage">Garbage</option>
-					<option value="Water">Water</option>
-					<option value="others">Others</option>
-				</select><br> <label>Description &nbsp;&nbsp;</label><br>
-				<textarea rows="4" cols="50"></textarea>
-				<br> <small style="text-align: right;">Upto 500 words</small> <br>
-				<label>Address/GeoLocation &nbsp;&nbsp;</label><br>
-				<textarea rows="4" cols="50"></textarea>
-				<br> <label>Upload Photo</label>
-				<form action="/action_page.php">
-					<input class="button" type="file" name="pic" accept="image/*">
-				</form>
-				<br> <a href="../html/TicketOpeningPage.html"><button
-						title="Click to register">RaiseTicket</button></a>
-
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="thumbnail">
+				<!-- <form action="#" th:action="@{/click_complaint}" th:text="${msg}" method="post"> -->				
+					<a href="complaints_received" target="_blank"> <img
+						src="../image/ComplaintIcon.jpg" alt="Lights" style="width: 77%">
+						<div class="caption">
+							<p style="text-align: center;">Complaints Received</p>
+						</div>
+					</a>
+				
+				</div>
 			</div>
-			<div id="menu1" class="container tab-pane fade">
-				<br>
-				<h4>Requests Received</h4>
-				<label>City&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				<input type="text" name="text"><br> <label>Street&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label>
-				<input type="text" name="text"><br> <label>ZipCode&nbsp;</label>
-				<input type="text" name="text"><br> <label>Description
-					&nbsp;&nbsp;</label><br>
-				<textarea rows="4" cols="50"></textarea>
-				<br>
-				<br> <label>Number Of People Requested&nbsp;&nbsp;</label> <input
-					type="number"> <a href="../html/TicketOpeningPage.html"><button
-						title="Click to register">RaiseTicket</button></a>
+			<div class="col-md-4">
+				<div class="thumbnail">
+					<a href="requests_received" target="_blank"> <img
+						src="../image/RequestIcon.jpg" alt="Nature" style="width: 50%">
+						<div class="caption">
+							<p style="text-align: center;">Requests Received</p>
+						</div>
+					</a>
+				</div>
 			</div>
 		</div>
 	</div>
-
-	<footer class="footer">
+	<footer>
 		<h4>Thank You</h4>
 	</footer>
 </body>
 </html>
+
+
