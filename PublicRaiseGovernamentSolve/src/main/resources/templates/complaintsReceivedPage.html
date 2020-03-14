@@ -88,10 +88,9 @@ footer {
 			</tr>
 		</tbody>
 	</table>
-	<input type="checkbox" name="test1" th:checked="${flag17}" />
-	<input type="checkbox" name="test2" th:checked="${flag18}" />
-	<input type="checkbox" name="test3" th:checked="${flag19}" />
-	<a href="admin_raise">RaiseTicket</a>
+	<Label title = "Multiple ticket numbers should be comma sperated">Enter Ticket Number(s)</Label>
+	<input type="text" th:value="${ticketNumbers}" />
+	<a th:href="@{'/admin_raise/' + ${ticketNumbers}}">RaiseTicket</a>
 		
 </div>
 

@@ -54,32 +54,6 @@ footer {
 	<section class="navbar">
 		<a href="existing_user">Sign Out</a>
 	</section>
-	<table border="1">
-		<thead>
-			<tr>
-				<th></th>
-				<th>ID</th>
-				<th>User Id</th>
-				<th>Complaint Type</th>
-				<th>Description</th>
-				<th>Address/GeoLocation</th>
-				<th>Uploaded Photo</th>
-				<th>Status</th>
-				
-			</tr>
-		</thead>
-	    <tbody>
-			<tr th:each="ticket : ${list_selected_complaints}">		
-			<td th:text="${ticket.Id}">Id</td>
-			<td th:text="${ticket.userId}">UserId</td>
-				<td th:text="${ticket.complaintType}">Complaint Type</td>
-				<td th:text="${ticket.description}">Description</td>
-				<td th:text="${ticket.geoLocation}">Address/GeoLocation</td>
-				<td th:text="${ticket.photo}">Uploaded Photo</td>
-				<td th:text="${ticket.status}">Status</td>
-			</tr>
-		</tbody>
-	</table>
 	<div class="container">
 <form action="#" th:action="@{/admin_ticket}" th:object="${service}" method="post">
 	 	<label>Department</label> 

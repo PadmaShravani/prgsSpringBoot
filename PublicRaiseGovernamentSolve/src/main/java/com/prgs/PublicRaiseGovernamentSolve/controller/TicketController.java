@@ -90,14 +90,9 @@ public class TicketController {
 	public String viewAllComplaints(Model model) {
 		System.out.println("all complaints");
 		List<TicketDetails> listAllComplaints=tservice.getAllTickets("complaint");
-		System.out.println(listAllComplaints.size()+"  size");
-		boolean flag17 = false;
-		boolean flag18 = false;
-		boolean flag19 = false;
+		System.out.println(listAllComplaints.size()+"  size");	
 		model.addAttribute("list_all_complaints", listAllComplaints);
-		model.addAttribute("flag17", flag17);
-		model.addAttribute("flag18", flag18);
-		model.addAttribute("flag19", flag19);
+		//model.addAttribute("ticketNumbers", "1,2");
 		return "complaintsReceivedPage";
 	}
 	@RequestMapping("/requests_received")

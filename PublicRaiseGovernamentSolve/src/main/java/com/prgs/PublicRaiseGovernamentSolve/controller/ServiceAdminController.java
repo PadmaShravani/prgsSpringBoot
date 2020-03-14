@@ -27,14 +27,12 @@ public class ServiceAdminController {
 	@Autowired
 	private DepartmentService dService;
 	
-	@RequestMapping("/admin_raise")
-	public String viewAdminticketpage(Model model) {
-		System.out.println("17: "+model.getAttribute("flag17"));
-		System.out.println("18: "+model.getAttribute("flag18"));
-		System.out.println("19: "+model.getAttribute("flag19"));
+	@RequestMapping("/admin_raise/{ticketNumbers}")
+	public String viewAdminticketpage(@PathVariable(name="ticketNumbers") String ticketNumbers, Model model) {
 		ServiceModel serviceticket=new ServiceModel();
 		model.addAttribute("service", serviceticket);
 		//Department department=new Department();
+		System.out.println("Select Tickets :"+ticketNumbers);
 		List<Department> dList = dService.listAll();
 		model.addAttribute("departments", dList);
 		return "adminTicketPage";
