@@ -30,6 +30,9 @@ public class ServiceModel {
 	@Column(nullable = false, length = 10)
 	private int level;
 	@Basic
+	@Column(length = 100)
+	private String ticketNumbers;
+	@Basic
 	@Column
 	private int departmentId;
 	
@@ -46,13 +49,14 @@ public class ServiceModel {
 		// TODO Auto-generated constructor stub
 	}
 
-	public ServiceModel(int serviceId, String description, String status, int level, int departmentId,
+	public ServiceModel(int serviceId, String description, String status, int level, String ticketNumbers, int departmentId,
 			List<TicketDetails> listOfticket, Department department) {
 		super();
 		this.serviceId = serviceId;
 		this.description = description;
 		this.status = status;
 		this.level = level;
+		this.ticketNumbers = ticketNumbers;
 		this.departmentId = departmentId;
 		this.listOfticket = listOfticket;
 		this.department = department;
@@ -84,6 +88,14 @@ public class ServiceModel {
 
 	public Department getDepartment() {
 		return department;
+	}
+	
+	public String getTicketNumbers() {
+		return ticketNumbers;
+	}
+
+	public void setTicketNumbers(String ticketNumbers) {
+		this.ticketNumbers = ticketNumbers;
 	}
 
 	public void setServiceId(int serviceId) {

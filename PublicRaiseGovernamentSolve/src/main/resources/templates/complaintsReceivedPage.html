@@ -88,10 +88,13 @@ footer {
 			</tr>
 		</tbody>
 	</table>
+<form action="#" th:action="@{/admin_raise}" th:object="${users}"
+			method="post">
+   
 	<Label title = "Multiple ticket numbers should be comma sperated">Enter Ticket Number(s)</Label>
-	<input type="text" th:value="${ticketNumbers}" />
-	<a th:href="@{'/admin_raise/' + ${ticketNumbers}}">RaiseTicket</a>
-		
+	<input type="text" th:value="${service.ticketNumbers}" th:field="${service.ticketNumbers}" />
+	<button> RaiseTicket</button>
+	</form>	
 </div>
 
 	<footer class="footer">

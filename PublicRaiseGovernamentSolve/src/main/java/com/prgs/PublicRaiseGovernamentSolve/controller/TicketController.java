@@ -2,7 +2,6 @@ package com.prgs.PublicRaiseGovernamentSolve.controller;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,7 +10,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import com.prgs.PublicRaiseGovernamentSolve.Service.TicketService;
-import com.prgs.PublicRaiseGovernamentSolve.model.Department;
+import com.prgs.PublicRaiseGovernamentSolve.model.PrgsUtil;
+import com.prgs.PublicRaiseGovernamentSolve.model.ServiceModel;
 import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 
 
@@ -92,7 +92,8 @@ public class TicketController {
 		List<TicketDetails> listAllComplaints=tservice.getAllTickets("complaint");
 		System.out.println(listAllComplaints.size()+"  size");	
 		model.addAttribute("list_all_complaints", listAllComplaints);
-		//model.addAttribute("ticketNumbers", "1,2");
+		ServiceModel serviceticket=new ServiceModel();
+		model.addAttribute("service", serviceticket);
 		return "complaintsReceivedPage";
 	}
 	@RequestMapping("/requests_received")
@@ -106,9 +107,7 @@ public class TicketController {
 	
 //	@RequestMapping(value="/admin_ticket", method=RequestMethod.POST)
 //	public String adminRaiseTicket(@ModelAttribute("service") ServiceModel service,Model model) {
-//		
 //		return null;
-//		
 //	}
 	
 }
