@@ -65,6 +65,7 @@ footer {
 	<table border="1">
 		<thead>
 			<tr>
+				
 				<th>ID</th>
 				<th>User Id</th>
 				<th>Complaint Type</th>
@@ -76,7 +77,7 @@ footer {
 			</tr>
 		</thead>
 	    <tbody>
-			<tr th:each="ticket : ${list_all_complaints}">
+			<tr th:each="ticket : ${list_all_complaints}">			
 			<td th:text="${ticket.Id}">Id</td>
 			<td th:text="${ticket.userId}">UserId</td>
 				<td th:text="${ticket.complaintType}">Complaint Type</td>
@@ -87,6 +88,9 @@ footer {
 			</tr>
 		</tbody>
 	</table>
+	<input type="checkbox" name="test1" th:checked="${flag17}" />
+	<input type="checkbox" name="test2" th:checked="${flag18}" />
+	<input type="checkbox" name="test3" th:checked="${flag19}" />
 	<a href="admin_raise">RaiseTicket</a>
 		
 </div>

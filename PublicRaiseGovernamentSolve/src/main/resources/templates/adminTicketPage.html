@@ -54,41 +54,48 @@ footer {
 	<section class="navbar">
 		<a href="existing_user">Sign Out</a>
 	</section>
+	<table border="1">
+		<thead>
+			<tr>
+				<th></th>
+				<th>ID</th>
+				<th>User Id</th>
+				<th>Complaint Type</th>
+				<th>Description</th>
+				<th>Address/GeoLocation</th>
+				<th>Uploaded Photo</th>
+				<th>Status</th>
+				
+			</tr>
+		</thead>
+	    <tbody>
+			<tr th:each="ticket : ${list_selected_complaints}">		
+			<td th:text="${ticket.Id}">Id</td>
+			<td th:text="${ticket.userId}">UserId</td>
+				<td th:text="${ticket.complaintType}">Complaint Type</td>
+				<td th:text="${ticket.description}">Description</td>
+				<td th:text="${ticket.geoLocation}">Address/GeoLocation</td>
+				<td th:text="${ticket.photo}">Uploaded Photo</td>
+				<td th:text="${ticket.status}">Status</td>
+			</tr>
+		</tbody>
+	</table>
 	<div class="container">
-<form action="#" th:action="@{/admin_ticket}" th:object="${service}"	method="post">
-	<!-- 	<label>Department</label> <select name="Department"	th:field="*{department}">
-			<option value="Select one Option">Select one Option</option>
-			<option value="Electrical">Electrical</option>
-			<option value="Road Transport">Roads</option>
-			<option value="Municipal">Garbage</option>
-			<option value="Water Resources">Water</option>
-			<option value="others">Others</option>
-		</select><br>
-		 -->
+<form action="#" th:action="@{/admin_ticket}" th:object="${service}" method="post">
+	 	<label>Department</label> 
+	 	<select required="required" th:value="${departmentId}" 
+		 name="departmentId" id="departmentId">
+         <option th:each="department : ${departments}" th:value="${department.departmentId}" th:label="${department.departmentName}" ></option>
+         </select>
+		<br>
+		
 		<br> <label>Priority level</label> <input type="number"
 			name="Priority" th:field="*{level}"><br>
 			 <font size="-2">(1-Critical,2-Important,3-Normal,4-Low)</font><br>
 		<br> <label>Description &nbsp;&nbsp;</label><br>
 		<textarea rows="4" cols="50" th:field="*{description}"></textarea>
 		<br><br>
-	<!-- 	<br> <label>Department Email</label> <input class="length"
-			type="email" name="email" placeholder="email "
-			th:field="*{departmentEmail}"><br>
-		<br> <label>Department Head Email</label> <input class="length"
-			type="email" name="email" placeholder="email "
-			th:field="*{departmentHeadEmail}"><br>
-	 -->		
-			<label>Department Id</label> <input class="length"
-			type="number" name="departmentId" placeholder="departmentId "
-			th:field="*{departmentId}"><br>
-		<br> <label>Status</label> <select name="Status"
-			th:field="*{status}">
-			<option value="Select one Option">Select one Option</option>
-			<option value="Open">Open</option>
-			<option value="Closed">Closed</option>
-			<option value="Pending">Pending</option>
-			<option value="Progress">Progress</option>
-		</select><br>
+	 	
 		<br> <input class="button" type="submit" value="OpenTicket">
 </form>
 	</div>
