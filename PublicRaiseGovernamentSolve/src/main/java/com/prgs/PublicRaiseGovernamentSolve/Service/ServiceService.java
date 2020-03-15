@@ -5,9 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.ServiceModel;
-import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 import com.prgs.PublicRaiseGovernamentSolve.repository.ServiceRepository;
 @Service
 public class ServiceService {
@@ -24,5 +22,8 @@ public class ServiceService {
 		return srepo.findById(id).get();
 		
 	}
-	
+	public List<ServiceModel> listAll(){
+		
+		return srepo.findAll();
+	}
 }

@@ -30,16 +30,12 @@ public class ServiceAdminController {
 	@Autowired
 	private TicketService tService;
 
-//	@RequestMapping("/admin_raise/{ticketNumbers}")
-//	public String viewAdminticketpage(@PathVariable(name="ticketNumbers") String ticketNumbers, Model model) {
-//		ServiceModel serviceticket=new ServiceModel();
-//		model.addAttribute("service", serviceticket);
-//		//Department department=new Department();
-//		System.out.println("Select Tickets :"+ticketNumbers);
-//		List<Department> dList = dService.listAll();
-//		model.addAttribute("departments", dList);
-//		return "adminTicketPage";
-//	}		
+	
+	
+	@RequestMapping("/admin_page")
+	public String adminViewPage(Model model) {
+		return "adminViewPage";
+	}
 
 	@RequestMapping("/admin_raise")
 	public String viewAdminticketpage(@ModelAttribute("service") ServiceModel serviceticket1, Model model) {
@@ -69,8 +65,28 @@ public class ServiceAdminController {
 				tickets[i].setServiceId(serviceticket.getServiceId());
 				tService.save(tickets[i]);
 			}
+			
 		}
-		return "adminTicketPage";
+		System.out.println("all Service Tickets");
+		List<ServiceModel> listAllServiceTickets=sService.listAll();
+		System.out.println(listAllServiceTickets.size()+"  size");	
+		model.addAttribute("list_all_service_tickets", listAllServiceTickets);
+		return "serviceticketListPage";
+	}
+	
+	@RequestMapping("/serviceList")
+	public String viewAllServiceTickets(Model model) {
+		System.out.println("all Service Tickets");
+		List<ServiceModel> listAllServiceTickets=sService.listAll();
+		System.out.println(listAllServiceTickets.size()+"  size");	
+		model.addAttribute("list_all_service_tickets", listAllServiceTickets);
+		
+		return "serviceticketListPage";
+	}
+	
+	@RequestMapping("/department_page")
+	public String departmentViewPage(Model model) {
+		return "departmentViewpage";
 	}
 
 	@RequestMapping("/department_ticket_open")
@@ -87,17 +103,14 @@ public class ServiceAdminController {
 
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditProductForm(@PathVariable(name="id") int id) {
-		
 		ModelAndView mav = new ModelAndView("editDepartmentListPage");
 		ServiceModel serviceTicket = sService.get(id);
 		mav.addObject("service", serviceTicket);
-		
 		return mav;
 	}
 	
 	@RequestMapping(value="/saveTicket", method=RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("service") ServiceModel serviceTicket) {
-	
 		sService.save(serviceTicket);
 		return "redirect:/";
 		

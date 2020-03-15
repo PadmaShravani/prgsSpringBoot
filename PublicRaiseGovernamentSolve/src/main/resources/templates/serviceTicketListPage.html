@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Request received page</title>
+<title>Service tickets page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -62,36 +62,31 @@ footer {
         <a href="existing_user">Sign Out</a>   
     </section>
 <div>
-<table border="1">
+
+	<table border="1">
 		<thead>
 			<tr>
-				<th>City</th>
-				<th>Street</th>
-				<th>ZipCode</th>
+				
+				<th>Service ID</th>
 				<th>Description</th>
-				<th>Status</th>	
+			<!-- 	<th>Uploaded Photo</th> -->
+				<th>Priority level</th>
+				<th>Department</th>
+				<th>Status</th>
+				
 			</tr>
 		</thead>
 	    <tbody>
-			<tr th:each="ticket : ${list_all_requests}">
-			<td th:text="${ticket.Id}">Id</td>
-			<td th:text="${ticket.userId}">UserId</td>
-				<td th:text="${ticket.city}">City</td>
-				<td th:text="${ticket.street}">Street</td>
-				<td th:text="${ticket.zipCode}">ZipCode</td>
+			<tr th:each="ticket : ${list_all_service_tickets}">			
+			<td th:text="${ticket.serviceId}">Service Id</td>
 				<td th:text="${ticket.description}">Description</td>
+				<td th:text="${ticket.level}">Level</td>
+				<td th:text="${ticket.departmentId}">Department</td>
 				<td th:text="${ticket.status}">Status</td>
 			</tr>
 		</tbody>
 	</table>
-	<form action="#" th:action="@{/admin_raise}" th:object="${service}"
-			method="post">
-   
-	<Label title = "Multiple ticket numbers should be comma sperated">Enter Ticket Number(s)</Label>
-	<input type="text" th:value="*{ticketNumbers}" th:field="*{ticketNumbers}" />
-	<button> Raise Request Ticket</button>
-	</form>	
-		
+
 </div>
 
 	<footer class="footer">

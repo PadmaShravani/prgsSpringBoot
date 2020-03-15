@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Bootstrap Example</title>
+<title>Complaints Received page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -58,6 +58,7 @@ footer {
 		<label th:text=${msg}></label>
 	</header>
 	<section class="navbar">
+		<a href="admin_page">HomePage</a>
         <a href="existing_user">Sign Out</a>   
     </section>
 <div>
@@ -93,7 +94,7 @@ footer {
    
 	<Label title = "Multiple ticket numbers should be comma sperated">Enter Ticket Number(s)</Label>
 	<input type="text" th:value="*{ticketNumbers}" th:field="*{ticketNumbers}" />
-	<button> RaiseTicket</button>
+	<button> Raise complaint Ticket</button>
 	</form>	
 </div>
 
