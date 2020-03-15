@@ -1,8 +1,11 @@
 package com.prgs.PublicRaiseGovernamentSolve.Service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.ServiceModel;
 import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 import com.prgs.PublicRaiseGovernamentSolve.repository.ServiceRepository;
@@ -14,5 +17,12 @@ public class ServiceService {
 		srepo.save(service);
 	
 	}
-
+	public List<ServiceModel> getDepartmentTickets(int departmentId){
+		return srepo.findByDepartmentId(departmentId);
+		}
+	public ServiceModel get(int id) {
+		return srepo.findById(id).get();
+		
+	}
+	
 }

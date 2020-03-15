@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.prgs.PublicRaiseGovernamentSolve.model.Department;
-import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 import com.prgs.PublicRaiseGovernamentSolve.repository.DepartmentRepository;
 @Service
 public class DepartmentService {
@@ -17,5 +16,10 @@ public class DepartmentService {
 		
 		return drepo.findAll();
 	}
+//	public Department get(int id) {
+//		return drepo.findById(id).get();
+//		
+//	}
 	
+
 }

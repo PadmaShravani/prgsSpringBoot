@@ -56,6 +56,8 @@ footer {
 	</section>
 	<div class="container">
 <form action="#" th:action="@{/admin_ticket}" th:object="${service}" method="post">
+		<label>Selected Tickets</label>
+		<input type="text" th:value="*{ticketNumbers}" th:field="*{ticketNumbers}" />
 	 	<label>Department</label> 
 	 	<select required="required" th:value="${departmentId}" 
 		 name="departmentId" id="departmentId">

@@ -4,6 +4,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 import com.prgs.PublicRaiseGovernamentSolve.repository.UsersRepository;
 
@@ -24,7 +25,8 @@ public class UsersService {
 				return "adminViewPage";
 			} else if (users.getRoleId() == 3) {
 				System.out.println("department login");
-				return "departmentViewPage";
+				
+				return "departmentViewPage1";
 			}
 		return "visitor";
 	}

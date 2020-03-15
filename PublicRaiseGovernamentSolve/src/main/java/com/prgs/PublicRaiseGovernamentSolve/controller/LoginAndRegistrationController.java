@@ -2,6 +2,8 @@ package com.prgs.PublicRaiseGovernamentSolve.controller;
 
 
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
+import com.prgs.PublicRaiseGovernamentSolve.Service.DepartmentService;
 import com.prgs.PublicRaiseGovernamentSolve.Service.UsersService;
+import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 
 @Controller
@@ -19,6 +23,8 @@ public class LoginAndRegistrationController {
 
 	@Autowired
 	private UsersService service;
+	@Autowired
+	private DepartmentService dService;
 
 	private String loggedInUser = null;
 
@@ -80,6 +86,10 @@ public class LoginAndRegistrationController {
 			return "login";
 		}
 		 System.out.println("role id "+exist_user.getRoleId());
+		 if(exist_user.getRoleId()==3) {
+			 List<Department> dList = dService.listAll();
+				model.addAttribute("departments", dList);
+		 }
 		return service.loginWithRole(exist_user);
 	}
 
