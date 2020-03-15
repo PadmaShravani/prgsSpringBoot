@@ -73,7 +73,11 @@ footer {
 					<td><input type="text" th:field="*{serviceId}" readonly="readonly" />
 					</td>
 				</tr>
-
+				<tr>
+					<td>Department ID</td>
+					<td><input type="text" th:field="*{departmentId}" readonly="readonly" />
+					</td>
+				</tr>
 				<tr>
 					<td>Description</td>
 					<td><input type="text" th:field="*{description}" readonly="readonly"  /></td>
@@ -82,15 +86,20 @@ footer {
 					<td>Level</td>
 					<td><input type="text" th:field="*{level}" readonly="readonly"  /></td>
 				</tr>
+					<tr>					
+					<td><input type="hidden" th:field="*{ticketNumbers}" readonly="readonly"  /></td>
+				</tr>
 				<tr>
 					<td>Status</td>
-					<td><select name="Status" th:field="*{status}">
-                            <option value="Select one Option">Select one Option</option>
+					<td>
+					  <select name="Status" th:field="*{status}" >
+                            <option value="Select one Option" >Select one Option</option>
                             <option value="Open">Open</option>
                             <option value="Closed">Closed</option>
                             <option value="Pending">Pending</option>
                             <option value="Progress">Progress</option>
-                        </select><br></td>
+                        </select><br>
+                        </td>
 				</tr>
 				
 				<tr>

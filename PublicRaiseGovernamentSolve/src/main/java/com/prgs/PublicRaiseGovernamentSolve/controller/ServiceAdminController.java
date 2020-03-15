@@ -112,7 +112,21 @@ public class ServiceAdminController {
 	@RequestMapping(value="/saveTicket", method=RequestMethod.POST)
 	public String saveProduct(@ModelAttribute("service") ServiceModel serviceTicket) {
 		sService.save(serviceTicket);
-		return "redirect:/";
+		System.out.println("Saved :"+serviceTicket.getServiceId());
+		System.out.println("ticket nums"+serviceTicket.getTicketNumbers());
+		String selTickets = serviceTicket.getTicketNumbers();
+		if (selTickets.contains(",")) {
+			System.out.println("Multiple Tickets");
+			String[] s = selTickets.split(",");
+			TicketDetails[] tickets = new TicketDetails[s.length];
+			for (int i = 0; i < s.length; i++) {
+				tickets[i] = tService.get(Integer.parseInt(s[i]));
+				System.out.println("Before - status : " + tickets[i].getStatus());
+				tickets[i].setStatus(serviceTicket.getStatus());
+				tService.save(tickets[i]);
+			}
+		}
+		return "editDepartmentListPage";
 		
 	}
 	
