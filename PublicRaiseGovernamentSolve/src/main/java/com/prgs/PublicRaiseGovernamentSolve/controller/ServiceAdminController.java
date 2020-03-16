@@ -128,7 +128,7 @@ public class ServiceAdminController {
 				tService.save(tickets[i]);
 			}
 		}
-		return "login";
+		return "visitor";
 		
 	}
 	
