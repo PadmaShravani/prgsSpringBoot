@@ -17,6 +17,9 @@ public class TicketService {
 
 		return trepo.findAll();
 	}
+	public List<TicketDetails> getByStatus(String status){
+		return trepo.findByStatus(status);
+	}
 
 	public void save(TicketDetails ticket) {
 		trepo.save(ticket);

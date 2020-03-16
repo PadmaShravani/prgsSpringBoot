@@ -10,4 +10,5 @@ public interface TicketDetailsRepository extends JpaRepository<TicketDetails,Int
 	 
 	List<TicketDetails> findByUserIdAndTicketType(int UserId,String ticketType);
 	List<TicketDetails> findByTicketType(String ticketType);
-}
+	List<TicketDetails> findByStatus(String status);
+ }

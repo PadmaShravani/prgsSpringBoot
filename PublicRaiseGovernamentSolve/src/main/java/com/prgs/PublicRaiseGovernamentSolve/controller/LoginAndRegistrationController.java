@@ -1,7 +1,5 @@
 package com.prgs.PublicRaiseGovernamentSolve.controller;
 
-
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,8 +11,10 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.SessionAttributes;
 
 import com.prgs.PublicRaiseGovernamentSolve.Service.DepartmentService;
+import com.prgs.PublicRaiseGovernamentSolve.Service.TicketService;
 import com.prgs.PublicRaiseGovernamentSolve.Service.UsersService;
 import com.prgs.PublicRaiseGovernamentSolve.model.Department;
+import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 
 @Controller
@@ -25,11 +25,22 @@ public class LoginAndRegistrationController {
 	private UsersService service;
 	@Autowired
 	private DepartmentService dService;
-
+	@Autowired
+	private TicketService tService;
+	
 	private String loggedInUser = null;
-
+	
 	@RequestMapping("/prgs")
 	public String viewVisitorPage(Model model) {
+		
+		List<TicketDetails> listAllTickets=tService.listAll();
+		System.out.println(listAllTickets.size()+"  size");	
+		model.addAttribute("list", listAllTickets.size());
+		
+		List<TicketDetails> solvedTickets=tService.getByStatus("closed");
+		System.out.println(solvedTickets.size()+"  size");	
+		model.addAttribute("closedList", solvedTickets.size());
+		
 		return "visitor";
 	}
 

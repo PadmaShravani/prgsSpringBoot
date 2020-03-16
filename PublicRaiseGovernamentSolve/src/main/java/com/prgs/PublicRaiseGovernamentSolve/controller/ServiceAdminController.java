@@ -86,6 +86,8 @@ public class ServiceAdminController {
 	
 	@RequestMapping("/department_page")
 	public String departmentViewPage(Model model) {
+		List<Department> dList = dService.listAll();
+		model.addAttribute("departments", dList);
 		return "departmentViewpage";
 	}
 
@@ -126,7 +128,7 @@ public class ServiceAdminController {
 				tService.save(tickets[i]);
 			}
 		}
-		return "editDepartmentListPage";
+		return "login";
 		
 	}
 	
