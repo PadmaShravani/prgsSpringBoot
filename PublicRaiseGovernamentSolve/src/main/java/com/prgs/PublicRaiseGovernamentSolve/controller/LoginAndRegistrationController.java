@@ -52,9 +52,10 @@ public class LoginAndRegistrationController {
 	}
 
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
-	public String saveUser(@ModelAttribute("users") Users users) {
+	public String saveUser(@ModelAttribute("users") Users users,Model model) {
 		users.setRoleId(1);
 		service.save(users);
+		model.addAttribute("success", "Successfully Registered");
 		return "login";
 	}
 

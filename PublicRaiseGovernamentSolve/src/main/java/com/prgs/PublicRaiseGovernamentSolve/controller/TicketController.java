@@ -46,7 +46,7 @@ public class TicketController {
 		ticket.setUserId((int) model.getAttribute("loggedInUserID"));
 		ticket.setServiceId(1);
 		tservice.save(ticket);	
-				
+		model.addAttribute("success", "Successfully created a ticket");
 		return "cticket";
 	}
 	
@@ -82,6 +82,7 @@ public class TicketController {
 		ticket.setUserId((int) model.getAttribute("loggedInUserID"));
 		ticket.setServiceId(1);
 		tservice.save(ticket);	
+		model.addAttribute("success", "Successfully created a Request ticket");
 		return "rticket";
 	}
 				

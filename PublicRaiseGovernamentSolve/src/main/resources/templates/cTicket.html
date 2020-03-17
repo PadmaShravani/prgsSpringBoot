@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
-<title>Bootstrap Example</title>
+<title>Complaint page</title>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet"
@@ -98,11 +98,13 @@ footer {
 						<br> <small style="text-align: right;">Upto 500 words</small><br>
 						<br> <label>Address/GeoLocation &nbsp;&nbsp;</label><br>
 						<textarea rows="4" cols="50" th:field="*{geoLocation}"></textarea>
-						<br> <br> <label>Attachment &nbsp;&#128206;</label>
+						<br> <br>
+						<!--  <label>Attachment &nbsp;&#128206;</label> -->
 						<!--         <form action="/action_page.php">
                 <input class="button" type="file" name="pic" accept="image/*" th:field="*{photo}">
             </form><br>  -->
-						<input class="button" type="submit">
+						<input class="button" type="submit" ><br>
+						 <label style="color:red;" th:text=${success}></label>
 					</form>
 
 				</div>

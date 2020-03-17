@@ -41,6 +41,7 @@ public class ServiceAdminController {
 	public String viewAdminticketpage(@ModelAttribute("service") ServiceModel serviceticket1, Model model) {
 		ServiceModel serviceticket = new ServiceModel();
 		serviceticket.setTicketNumbers(serviceticket1.getTicketNumbers());
+		System.out.println("tkt1 "+serviceticket1.getTicketNumbers());
 		model.addAttribute("service", serviceticket);
 		List<Department> dList = dService.listAll();
 		model.addAttribute("departments", dList);
@@ -63,9 +64,15 @@ public class ServiceAdminController {
 				tickets[i] = tService.get(Integer.parseInt(s[i]));
 				System.out.println("Before - Service ID: " + tickets[i].getServiceId());
 				tickets[i].setServiceId(serviceticket.getServiceId());
+				tickets[i].setStatus("assigned");
 				tService.save(tickets[i]);
+				
 			}
-			
+		}else {
+			TicketDetails tkt=tService.get(Integer.parseInt(selTickets));
+			tkt.setServiceId(serviceticket.getServiceId());
+			tkt.setStatus("assigned");
+			tService.save(tkt);
 		}
 		System.out.println("all Service Tickets");
 		List<ServiceModel> listAllServiceTickets=sService.listAll();
@@ -112,7 +119,7 @@ public class ServiceAdminController {
 	}
 	
 	@RequestMapping(value="/saveTicket", method=RequestMethod.POST)
-	public String saveProduct(@ModelAttribute("service") ServiceModel serviceTicket) {
+	public String saveTicket(@ModelAttribute("service") ServiceModel serviceTicket) {
 		sService.save(serviceTicket);
 		System.out.println("Saved :"+serviceTicket.getServiceId());
 		System.out.println("ticket nums"+serviceTicket.getTicketNumbers());
@@ -127,6 +134,10 @@ public class ServiceAdminController {
 				tickets[i].setStatus(serviceTicket.getStatus());
 				tService.save(tickets[i]);
 			}
+		}else {
+			TicketDetails tkt=tService.get(Integer.parseInt(selTickets));
+			tkt.setStatus(serviceTicket.getStatus());
+			tService.save(tkt);
 		}
 		return "visitor";
 		
