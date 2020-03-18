@@ -60,11 +60,13 @@ footer {
 	<section class="navbar">
 		<a href="admin_page">HomePage</a>
         <a href="existing_user">Sign Out</a>   
-    </section>
-<div>
-<table border="1">
+    </section><br>
+<div align="center">
+<table border="1" >
 		<thead>
 			<tr>
+				<th>Id</th>
+				<th>User Id</th>
 				<th>City</th>
 				<th>Street</th>
 				<th>ZipCode</th>
@@ -83,13 +85,13 @@ footer {
 				<td th:text="${ticket.status}">Status</td>
 			</tr>
 		</tbody>
-	</table>
+	</table><br><br>
 	<form action="#" th:action="@{/admin_raise}" th:object="${service}"
 			method="post">
    
 	<Label title = "Multiple ticket numbers should be comma sperated">Enter Ticket Number(s)</Label>
 	<input type="text" th:value="*{ticketNumbers}" th:field="*{ticketNumbers}" />
-	<button> Raise Request Ticket</button>
+	<button> Raise Request Ticket</button><br><br>
 	</form>	
 		
 </div>

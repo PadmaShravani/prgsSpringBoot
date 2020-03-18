@@ -59,13 +59,12 @@ footer {
 	<section class="navbar">
 	<a href="department_page">HomePage</a>
 		<a href="existing_user">Sign Out</a>
-	</section>
-	<div class="main">
+	</section><br>
+	<div class="main" align="center">
 		<table border="1">
 		<thead>
 			<tr>
 				<th>Service Id</th>
-				
 				<th>Description</th>
 				<th>Level</th>
 				<th>Status</th>	
@@ -78,21 +77,10 @@ footer {
 				<td th:text="${ticket.level}">Level</td>
 				<td th:text="${ticket.status}">Status</td>
 				<td><a th:href="@{'/edit/' + ${ticket.serviceId}}">Edit</a></td>
-				
-		<!-- 			<select name="Status" th:field="*{status}">
-                            <option value="Select one Option">Select one Option</option>
-                            <option value="Open">Open</option>
-                            <option value="Closed">Closed</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Progress">Progress</option>
-                        </select><br>
-                </td> -->	
 			</tr>
 		</tbody>
-	</table>
-	
-			
-	</div>
+	</table>		
+	</div><br>
 	<footer class="footer">
 		<h4>Thank You</h4>
 	</footer>

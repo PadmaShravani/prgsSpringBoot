@@ -60,21 +60,16 @@ footer {
 		<a href="existing_user">Sign Out</a>
 	</section>
 	<div class="main">
-<form action="#" th:action="@{/department_ticket_open}" th:object="${departments}" method="post">
-
-	<label>Department</label> 
-	 	<select required="required" th:value="${departmentId}" 
-		 name="departmentId" id="departmentId">
-         <option th:each="department : ${departments}" th:value="${department.departmentId}" th:label="${department.departmentName}" ></option>
-         </select>
-		<br>
-	
-	
-	<br> <input class="button" type="submit" value="OpenTickets">
-</form>
-	
-	
-	
+		<form action="#" th:action="@{/department_ticket_open}"
+			th:object="${departments}" method="post">
+			<label>Department</label> <select required="required"
+				th:value="${departmentId}" name="departmentId" id="departmentId">
+				<option th:each="department : ${departments}"
+					th:value="${department.departmentId}"
+					th:label="${department.departmentName}"></option>
+			</select> <br>
+			<br> <input class="button" type="submit" value="OpenTickets"><br>
+		</form>
 	</div>
 	<footer class="footer">
 		<h4>Thank You</h4>

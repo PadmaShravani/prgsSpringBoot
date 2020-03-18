@@ -55,6 +55,7 @@ footer {
 	<header class="header">
 		<h3>Welcome To PRGS</h3>
 		<h6>Public Raise Government Solve</h6>
+		<label th:text=${msg}></label>
 	</header>
 	<section class="navbar">
 		<a href="home">HomePage</a>
@@ -69,7 +70,6 @@ footer {
 				<li class="nav-item"><a class="nav-link" data-toggle="tab"
 					href="#menu1">All Requests</a></li>
 			</ul>
-
 			<!-- Tab panes -->
 			<div class="tab-content">
 				<div id="home" class="container tab-pane active">
@@ -81,13 +81,12 @@ footer {
 						<input type="text" name="zipCode" th:field="*{zipCode}"><br>
 						<label>Description &nbsp;&nbsp;</label><br>
 						<textarea rows="4" cols="50" th:field="*{description}"></textarea>
-						<br> <small style="text-align: right;">Up to 500 words</small>
+						<br> <small style="text-align: right;">Up to 50 words</small>
 						<br> <br> <input class="button" type="submit">
 						 <label style="color:red;" th:text=${success}></label>
-						
 					</form>
 				</div>
-				<div id="menu1" class="container tab-pane fade">
+				<div id="menu1" class="container tab-pane fade" align="center">
 					<br>
 					<h4>All Requests</h4>
 					<table border="1">

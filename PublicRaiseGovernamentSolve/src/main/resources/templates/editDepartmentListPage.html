@@ -57,67 +57,61 @@ footer {
 		<label th:text=${msg}></label>
 	</header>
 	<section class="navbar">
-	<a href="department_page">HomePage</a>
-		<a href="existing_user">Sign Out</a>
+		<a href="department_page">HomePage</a> <a href="existing_user">Sign
+			Out</a>
 	</section>
 	<div class="main">
-	
-	
-	<div align="center">
-		<h1>Edit ticket</h1>
-		<form action="#" th:action="@{/saveTicket}" th:object="${service}"
-			method="post">
-			<table>
-				<tr>
-					<td>Service ID</td>
-					<td><input type="text" th:field="*{serviceId}" readonly="readonly" />
-					</td>
-				</tr>
-				<tr>
-					<td>Department ID</td>
-					<td><input type="text" th:field="*{departmentId}" readonly="readonly" />
-					</td>
-				</tr>
-				<tr>
-					<td>Description</td>
-					<td><input type="text" th:field="*{description}" readonly="readonly"  /></td>
-				</tr>
-				<tr>
-					<td>Level</td>
-					<td><input type="text" th:field="*{level}" readonly="readonly"  /></td>
-				</tr>
-					<tr>					
-					<td><input type="hidden" th:field="*{ticketNumbers}" readonly="readonly"  /></td>
-				</tr>
-				<tr>
-					<td>Status</td>
-					<td>
-					  <select name="Status" th:field="*{status}" >
-                            <option value="Select one Option" >Select one Option</option>
-                            <option value="Open">Open</option>
-                            <option value="Closed">Closed</option>
-                            <option value="Pending">Pending</option>
-                            <option value="Progress">Progress</option>
-                        </select><br>
-                        </td>
-				</tr>
-				
-				<tr>
-					<td colspan="2"><button type="submit">Submit</button></td>
-				</tr>
-			</table>
 
-		</form>
-	</div>
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+		<div align="center">
+			<h1>Edit ticket</h1>
+			<form action="#" th:action="@{/saveTicket}" th:object="${service}"
+				method="post">
+				<table>
+					<tr>
+						<td>Service ID</td>
+						<td><input type="text" th:field="*{serviceId}"
+							readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td>Department ID</td>
+						<td><input type="text" th:field="*{departmentId}"
+							readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td>Description</td>
+						<td><textarea rows="4" cols="20" th:field="*{description}" readonly="readonly" ></textarea>
+					<!-- <input type="text" th:field="*{description}"
+							readonly="readonly" /></td> -->
+					</tr>
+					<tr>
+						<td>Level</td>
+						<td><input type="text" th:field="*{level}"
+							readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td><input type="hidden" th:field="*{ticketNumbers}"
+							readonly="readonly" /></td>
+					</tr>
+					<tr>
+						<td>Status</td>
+						<td><select name="Status" th:field="*{status}">
+								<option value="Select one Option">Select one Option</option>
+								<option value="Open">Open</option>
+								<option value="Closed">Closed</option>
+								<option value="Pending">Pending</option>
+								<option value="Progress">Progress</option>
+						</select><br></td>
+					</tr>
+					
+					<tr>
+					
+						<td colspan="2"><button type="submit">Submit</button></td>
+					</tr>
+				</table>
+ <label style="color:red;" th:text=${success}></label>
+			</form>
+		</div>
 	</div>
 	<footer class="footer">
 		<h4>Thank You</h4>

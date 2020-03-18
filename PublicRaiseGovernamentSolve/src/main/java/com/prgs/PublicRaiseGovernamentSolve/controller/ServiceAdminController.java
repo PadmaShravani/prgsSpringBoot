@@ -31,7 +31,6 @@ public class ServiceAdminController {
 	private TicketService tService;
 
 	
-	
 	@RequestMapping("/admin_page")
 	public String adminViewPage(Model model) {
 		return "adminViewPage";
@@ -119,7 +118,7 @@ public class ServiceAdminController {
 	}
 	
 	@RequestMapping(value="/saveTicket", method=RequestMethod.POST)
-	public String saveTicket(@ModelAttribute("service") ServiceModel serviceTicket) {
+	public String saveTicket(@ModelAttribute("service") ServiceModel serviceTicket,Model model) {
 		sService.save(serviceTicket);
 		System.out.println("Saved :"+serviceTicket.getServiceId());
 		System.out.println("ticket nums"+serviceTicket.getTicketNumbers());
@@ -139,11 +138,7 @@ public class ServiceAdminController {
 			tkt.setStatus(serviceTicket.getStatus());
 			tService.save(tkt);
 		}
-		return "visitor";
-		
+		model.addAttribute("success", "ticket Status has been changed");
+		return "editDepartmentListPage";
+		}
 	}
-	
-	
-	
-
-}
