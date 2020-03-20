@@ -11,17 +11,21 @@ import com.prgs.PublicRaiseGovernamentSolve.repository.ServiceRepository;
 public class ServiceService {
 	@Autowired
 	private ServiceRepository srepo;
+	
+	//Method to save new Service tickets raised by admin
 	public void save(ServiceModel service) {
 		srepo.save(service);
-	
 	}
+	//Method to Get list of all tickets based on department Id(Department User)
 	public List<ServiceModel> getDepartmentTickets(int departmentId){
 		return srepo.findByDepartmentId(departmentId);
 		}
+	//Method to get service ticket details for admin based on id
 	public ServiceModel get(int id) {
 		return srepo.findById(id).get();
 		
 	}
+	//Method to get list of Service ticket raised by admin
 	public List<ServiceModel> listAll(){
 		
 		return srepo.findAll();

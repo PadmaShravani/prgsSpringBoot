@@ -12,14 +12,10 @@ public class DepartmentService {
 	@Autowired
 	private DepartmentRepository drepo;
 	
+	//Method to get list of ticket details for a particular department 
 	public List<Department> listAll(){
 		
 		return drepo.findAll();
 	}
-//	public Department get(int id) {
-//		return drepo.findById(id).get();
-//		
-//	}
-	
 
 }
