@@ -13,25 +13,24 @@ import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
+//To crate a table in DataBase 
 @Entity
-@Table(name = "Users")
+@Table(name = "Users")//Specifying the name of the table in DataBase
 public class Users {
 
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(name = "userId")
-	private int userId;
-	@Basic
-	@Column(name = "firstName", length = 50, nullable = false)
+	@Id		//This field is primary key in the Table
+	@GeneratedValue(strategy = GenerationType.AUTO)		//Id is Auto Generated and a sequence table is created
+	@Column(name = "userId")	//Specifying the name of the column in Table
+	private int userId;		//columns in the table in DataBase
+	@Basic		//Normal columns in the Table
+	@Column(name = "firstName", length = 50, nullable = false)//specifying this column is not null and length 
 	private String firstName;
 
 	@Basic
 	@Column(name = "lastName", length = 50, nullable = false)
 	private String lastName;
 	@Basic
-	@Size(min = 2, max = 30, message = "wrong username")
 	@Column(name = "userName", length = 50, nullable = false)
 	private String userName;
 	@Basic
@@ -50,21 +49,23 @@ public class Users {
 	@Column(name = "roleId")
 	private int roleId;
 
-	@OneToMany(cascade = CascadeType.ALL)
-	@JoinColumn(name = "userId", referencedColumnName = "userId")
-	private List<TicketDetails> listOfticket;
+	@OneToMany(cascade = CascadeType.ALL)	//Specifying the relation with other Table in DB 
+	@JoinColumn(name = "userId", referencedColumnName = "userId")	//Specifying which column is related
+	//Using this join spring JPA does't create joinedTable in DB
+	private List<TicketDetails> listOfticket;	//Mentioning which table to relate
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "roleId", referencedColumnName = "roleId",insertable = false, updatable = false)
-	private Role role;
+	private Role role; 	//Mentioning which table to relate
 
+	
+	//Default Constructor
 	public Users() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
-
-	public Users(int userId, String firstName, String lastName,
-			@Size(min = 2, max = 30, message = "wrong username") String userName, String email, String password,
+	//Parameterized Constructor
+	public Users(int userId, String firstName, String lastName,String userName, String email, String password,
 			String dateOfBirth, String gender, int roleId, List<TicketDetails> listOfticket, Role role) {
 		super();
 		this.userId = userId;
@@ -80,6 +81,8 @@ public class Users {
 		this.role = role;
 	}
 
+	
+	//Getters and Setters
 	public int getUserId() {
 		return userId;
 	}

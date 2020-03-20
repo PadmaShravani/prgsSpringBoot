@@ -85,6 +85,7 @@ public class TicketDetails {
 		this.status = status;
 	}
 
+	//Getters and Setters
 	public int getId() {
 		return Id;
 	}
@@ -180,8 +181,6 @@ public class TicketDetails {
 	public void setServiceId(int serviceId) {
 		this.serviceId = serviceId;
 	}
-
-	
 
 }
 

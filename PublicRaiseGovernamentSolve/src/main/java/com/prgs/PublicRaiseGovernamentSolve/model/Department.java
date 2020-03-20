@@ -23,6 +23,8 @@ public class Department {
 	@Basic
 	@Column(length=50)
 	private String departmentHeadEmail;
+	
+	//Constructors
 	public Department() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -34,6 +36,7 @@ public class Department {
 		this.departmentEmail = departmentEmail;
 		this.departmentHeadEmail = departmentHeadEmail;
 	}
+	//Getters and Setters
 	public int getDepartmentId() {
 		return departmentId;
 	}
@@ -58,10 +61,6 @@ public class Department {
 	public void setDepartmentHeadEmail(String departmentHeadEmail) {
 		this.departmentHeadEmail = departmentHeadEmail;
 	}
-	
-	
-	
-
 	
 	
 }

@@ -99,6 +99,12 @@ footer {
 						<br> <label>Address &nbsp;&nbsp;</label><br>
 						<textarea rows="4" cols="50" th:field="*{geoLocation}"></textarea>
 						<br> <br>
+						
+
+						
+						
+						
+						
 						<!--  <label>Attachment &nbsp;&#128206;</label> -->
 						<!--         <form action="/action_page.php">
                 <input class="button" type="file" name="pic" accept="image/*" th:field="*{photo}">
@@ -106,6 +112,32 @@ footer {
 						<input class="button" type="submit" ><br>
 						 <label style="color:red;" th:text=${success}></label>
 					</form>
+					
+					
+					
+<p>Click the button to get your coordinates.</p>
+
+<button onclick="getLocation()"   value="Value-1">Try It</button>
+
+<p id="demo"></p>
+
+<script>
+var x = document.getElementById("demo");
+
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition);
+  } else { 
+    x.innerHTML = "Geolocation is not supported by this browser.";
+  }
+}
+
+function showPosition(position) {
+  x.innerHTML = "Latitude: " + position.coords.latitude + 
+  "<br>Longitude: " + position.coords.longitude;
+}
+</script>
+					
 				</div>
 				<div id="menu1" class="container tab-pane fade" align="center">
 					<br>

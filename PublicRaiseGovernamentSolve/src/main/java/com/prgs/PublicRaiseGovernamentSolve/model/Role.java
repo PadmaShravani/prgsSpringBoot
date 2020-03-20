@@ -20,6 +20,7 @@ public class Role {
 	@Column(name="roleName",length=50,nullable = false)
 	private String roleName;
 
+	//Constructors
 	public Role() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -30,7 +31,7 @@ public class Role {
 		this.roleId = roleId;
 		this.roleName = roleName;
 	}
-
+	//Getters and Setters
 	public int getRoleId() {
 		return roleId;
 	}

@@ -126,8 +126,6 @@ public class ServiceModel {
 		this.department = department;
 	}
 
-	 
-	 
-	 
+
 	
 }
