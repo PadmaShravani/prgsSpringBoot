@@ -1,5 +1,7 @@
 package com.prgs.PublicRaiseGovernamentSolve;
-
+/*Web Application for public where he/she can raise a ticket for common social Problems in the
+ *Society.After solving the issue user can see his ticket status
+ */
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
