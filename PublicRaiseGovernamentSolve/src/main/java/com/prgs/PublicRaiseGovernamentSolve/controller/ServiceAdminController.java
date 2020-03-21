@@ -19,9 +19,8 @@ import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.ServiceModel;
 import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 
-@Controller
+@Controller //This class perform the business logic (and can call the services) by its method
 @SessionAttributes({ "msg", "loggedInUserID", "loggedInUserEmail", "loggedInUserName" })
-
 public class ServiceAdminController {
 	@Autowired
 	private ServiceService sService;
@@ -30,12 +29,12 @@ public class ServiceAdminController {
 	@Autowired
 	private TicketService tService;
 
-	
+	//Method to display admin page
 	@RequestMapping("/admin_page")
 	public String adminViewPage(Model model) {
 		return "adminViewPage";
 	}
-
+	//Using this method admin can choose multiple tickets and raise a service ticket
 	@RequestMapping("/admin_raise")
 	public String viewAdminticketpage(@ModelAttribute("service") ServiceModel serviceticket1, Model model) {
 		ServiceModel serviceticket = new ServiceModel();
@@ -46,7 +45,7 @@ public class ServiceAdminController {
 		model.addAttribute("departments", dList);
 		return "adminTicketPage";
 	}
-
+	//This method saves the ticket and changes the status of the ticket
 	@RequestMapping(value = "/admin_ticket", method = RequestMethod.POST)
 	public String adminRaiseTicket(@ModelAttribute("service") ServiceModel serviceticket, Model model) {
 		System.out.println("Department Id: " + serviceticket.getDepartmentId());
@@ -65,7 +64,6 @@ public class ServiceAdminController {
 				tickets[i].setServiceId(serviceticket.getServiceId());
 				tickets[i].setStatus("assigned");
 				tService.save(tickets[i]);
-				
 			}
 		}else {
 			TicketDetails tkt=tService.get(Integer.parseInt(selTickets));
@@ -79,36 +77,32 @@ public class ServiceAdminController {
 		model.addAttribute("list_all_service_tickets", listAllServiceTickets);
 		return "serviceticketListPage";
 	}
-	
+	//To Display the complete service ticket list
 	@RequestMapping("/serviceList")
 	public String viewAllServiceTickets(Model model) {
 		System.out.println("all Service Tickets");
 		List<ServiceModel> listAllServiceTickets=sService.listAll();
 		System.out.println(listAllServiceTickets.size()+"  size");	
 		model.addAttribute("list_all_service_tickets", listAllServiceTickets);
-		
 		return "serviceticketListPage";
 	}
-	
+	//This method is for Department user,he can choose a department
 	@RequestMapping("/department_page")
 	public String departmentViewPage(Model model) {
 		List<Department> dList = dService.listAll();
 		model.addAttribute("departments", dList);
 		return "departmentViewpage";
 	}
-
+	//To get List of tickets based on department
 	@RequestMapping("/department_ticket_open")
 	public String viewDepartmentPage(@ModelAttribute("department") Department dept,Model model) {
-		
-		//Department department = new Department();
 		List<ServiceModel> serviceTktListByDept = sService.getDepartmentTickets(dept.getDepartmentId());
 		System.out.println("d t id:"+dept.getDepartmentId());
 		model.addAttribute("servicetickets", serviceTktListByDept);
-		//System.out.println("d id:"+serviceticket.getDepartmentId());
 		return "departmentListPage";
 
 	}
-
+	 //Department user can edit a status of a ticket 
 	@RequestMapping("/edit/{id}")
 	public ModelAndView showEditProductForm(@PathVariable(name="id") int id) {
 		ModelAndView mav = new ModelAndView("editDepartmentListPage");
@@ -116,7 +110,7 @@ public class ServiceAdminController {
 		mav.addObject("service", serviceTicket);
 		return mav;
 	}
-	
+	//DepartmentUser can change the status after solving the problem and save in DataBase
 	@RequestMapping(value="/saveTicket", method=RequestMethod.POST)
 	public String saveTicket(@ModelAttribute("service") ServiceModel serviceTicket,Model model) {
 		sService.save(serviceTicket);

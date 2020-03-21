@@ -14,7 +14,6 @@ public class DepartmentService {
 	
 	//Method to get list of ticket details for a particular department 
 	public List<Department> listAll(){
-		
 		return drepo.findAll();
 	}
 

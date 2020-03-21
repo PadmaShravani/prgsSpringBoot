@@ -17,20 +17,22 @@ import com.prgs.PublicRaiseGovernamentSolve.model.Department;
 import com.prgs.PublicRaiseGovernamentSolve.model.TicketDetails;
 import com.prgs.PublicRaiseGovernamentSolve.model.Users;
 
-@Controller
+@Controller		//This class perform the business logic (and can call the services) by its method
+//session annotation is  used to store the model attribute in the session
 @SessionAttributes({"msg","loggedInUserID", "loggedInUserEmail", "loggedInUserName"})
 public class LoginAndRegistrationController {
 
-	@Autowired
+	@Autowired		//This annotation enables you to inject the object dependency implicitly
 	private UsersService service;
-	@Autowired
+	@Autowired		//This annotation enables you to inject the object dependency implicitly
 	private DepartmentService dService;
-	@Autowired
+	@Autowired		//This annotation enables you to inject the object dependency implicitly
 	private TicketService tService;
 	
 	private String loggedInUser = null;
 	
-	@RequestMapping("/prgs")
+	@RequestMapping("/prgs")	//This annotation maps HTTP requests to handler methods of MVC 
+	//Method to get first view page
 	public String viewVisitorPage(Model model) {
 		
 		List<TicketDetails> listAllTickets=tService.listAll();
@@ -40,17 +42,16 @@ public class LoginAndRegistrationController {
 		List<TicketDetails> solvedTickets=tService.getByStatus("closed");
 		System.out.println(solvedTickets.size()+"  size");	
 		model.addAttribute("closedList", solvedTickets.size());
-		
 		return "visitor";
 	}
-
+	//Method to display signUp page
 	@RequestMapping("/new_user")
 	public String showNewUserForm(Model model) {
 		Users users = new Users();
 		model.addAttribute("users", users);
 		return "signUp";
 	}
-
+	//Method to save new user and display success message if registered
 	@RequestMapping(value = "/save", method = RequestMethod.POST)
 	public String saveUser(@ModelAttribute("users") Users users,Model model) {
 		users.setRoleId(1);
@@ -58,7 +59,7 @@ public class LoginAndRegistrationController {
 		model.addAttribute("success", "Successfully Registered");
 		return "login";
 	}
-
+	//Method to show login page
 	@RequestMapping("/existing_user")
 	public String showLoginForm(Model model) {
 		Users users = new Users();
@@ -66,7 +67,7 @@ public class LoginAndRegistrationController {
 		return "login";
 	}
 	
-
+	//Method to validate  users credentials 
 	@RequestMapping(value = "/login", method = RequestMethod.POST)
 	public String validateLoginInfo(@ModelAttribute Users user, Model model) {
 		System.out.println("Entered :" + user.getEmail());
